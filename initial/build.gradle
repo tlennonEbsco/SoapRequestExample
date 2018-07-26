@@ -25,7 +25,7 @@ repositories {
 task genJaxb {
     ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
     ext.classesDir = "${buildDir}/classes/jaxb"
-    ext.schema = "http://www.webservicex.com/stockquote.asmx?WSDL"
+    ext.schema = "http://edc-ags.epnet.com/AdminGatewayService/UserProfile.svc?singlewsdl"
 
     outputs.dir classesDir
 
@@ -65,6 +65,8 @@ targetCompatibility = 1.8
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
     compile("org.springframework.ws:spring-ws-core")
     compile(files(genJaxb.classesDir).builtBy(genJaxb))
 
